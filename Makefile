@@ -11,6 +11,7 @@
 
 
 setup: setup_claude_code setup_npm_tools  ## Setup plugin dev environment (Claude Code + npm tools)
+	# sudo apt-get install -y gh
 	echo "Plugin dev environment ready."
 
 setup_claude_code:  ## Install Claude Code CLI
