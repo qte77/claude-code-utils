@@ -23,7 +23,7 @@ Trigger this skill when:
 ## References
 
 **MUST READ**:
-`docs/best-practices/mas-design-principles.md`
+`references/mas-design-principles.md`
 
 ## Core Principles
 

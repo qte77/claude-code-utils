@@ -16,7 +16,7 @@ specifications exactly. No over-engineering.
 
 ## Python Standards
 
-See `docs/best-practices/python-best-practices.md` for comprehensive Python guidelines.
+See `references/python-best-practices.md` for comprehensive Python guidelines.
 
 ## Workflow
 
