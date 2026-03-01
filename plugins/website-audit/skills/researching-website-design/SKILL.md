@@ -81,3 +81,10 @@ ADOPT: [Underused effective pattern]
 - Extract exact values: hex codes, font names, button text
 - Track cross-references between sites to identify authoritative sources
 - Keep insights concise and actionable for design implementation
+
+## Further Reading
+
+- [Awwwards — Website Design Trends](https://www.awwwards.com/)
+- [Google Fonts](https://fonts.google.com/)
+- [Dribbble — Design Inspiration](https://dribbble.com/)
+- [Smashing Magazine — Web Design](https://www.smashingmagazine.com/category/design/)

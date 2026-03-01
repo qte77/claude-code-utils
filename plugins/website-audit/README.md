@@ -8,6 +8,17 @@ Website design research, usability audit, and WCAG accessibility audit skills.
 - **auditing-website-usability** — Audits website usability for UX optimization, covering forms, navigation, and microcopy
 - **auditing-website-accessibility** — Audits website accessibility for WCAG 2.1 AA compliance, generating findings and code fixes
 
+## Demo
+
+Try it out after installing:
+
+```text
+/auditing-website-accessibility https://example.com
+```
+
+This will run a WCAG 2.1 AA compliance audit against the target URL,
+producing findings with severity levels and implementable code fixes.
+
 ## Install
 
 ```bash

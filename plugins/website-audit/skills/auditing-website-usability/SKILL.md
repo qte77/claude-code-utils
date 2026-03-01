@@ -83,3 +83,9 @@ Group fixes by: Forms, Navigation, Validation, Microcopy.
 - No time estimates -- prioritize by impact only
 - Defer WCAG/accessibility concerns to `auditing-website-accessibility`
 - Keep output concise: findings + fixes + checklist only
+
+## Further Reading
+
+- [Nielsen Norman Group — UX Research](https://www.nngroup.com/articles/)
+- [Usability.gov — User Interface Design](https://www.usability.gov/what-and-why/user-interface-design.html)
+- [Baymard Institute — UX Benchmarks](https://baymard.com/blog)
