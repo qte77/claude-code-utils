@@ -1,7 +1,8 @@
 {
   "name": "docs-generator",
   "version": "1.0.0",
-  "description": "Academic/technical writeup generation with IEEE citations and pandoc PDF output",
+  "description": "Document generation for writeups, tech specs (ADR/RFC/design docs), and reports with optional pandoc PDF export",
   "author": { "name": "Claude Code Utils Contributors" },
-  "keywords": ["docs", "writeup", "pandoc", "citations"]
+  "keywords": ["docs", "writeup", "pandoc", "citations", "adr", "rfc", "design-doc", "report"],
+  "hooks": "./hooks/hooks.json"
 }

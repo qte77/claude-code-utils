@@ -2,8 +2,8 @@
 name: designing-mas-plugins
 description: Design evaluation plugins following 12-Factor + MAESTRO principles
 compatibility: Designed for Claude Code
-allowed-tools: Read Grep Glob WebSearch WebFetch
 metadata:
+  allowed-tools: Read, Grep, Glob, WebSearch, WebFetch
   argument-hint: [component-name]
 ---
 
@@ -212,3 +212,5 @@ def test_plugin_error_handling():
 - [12-Factor Agents](https://github.com/humanlayer/12-factor-agents)
 - [Anthropic Harnesses](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)
 - [PydanticAI Patterns](https://pydantic.dev/articles/building-agentic-application)
+- [NIST AI RMF 1.0](https://www.nist.gov/artificial-intelligence/executive-order-safe-secure-and-trustworthy-artificial-intelligence)
+- [ISO/IEC 42001:2023 — AI Management System](https://www.iso.org/standard/81230.html)

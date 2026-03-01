@@ -2,8 +2,8 @@
 name: auditing-website-accessibility
 description: Audits website accessibility for WCAG 2.1 AA compliance, generating findings and code fixes. Use when reviewing accessibility, keyboard navigation, screen reader compatibility, or inclusive design.
 compatibility: Designed for Claude Code
-allowed-tools: Read Write Edit Glob Grep Bash WebSearch WebFetch
 metadata:
+  allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
   argument-hint: [url-or-file-path]
 ---
 
@@ -13,6 +13,11 @@ metadata:
 
 Conducts focused accessibility audits against WCAG 2.1 AA and generates
 implementable code fixes. No over-analysis.
+
+## WCAG Quick Reference
+
+**MUST READ** `references/wcag-quick-reference.md` before auditing. Use it as
+the checklist for all findings.
 
 ## Audit Areas
 
@@ -79,3 +84,11 @@ Group fixes by: Keyboard Navigation, Screen Readers, Visual, Forms/Tables.
 - Every finding must include a specific, implementable code fix
 - Test keyboard navigation and screen reader paths manually
 - Keep output concise: findings + fixes + checklist only
+
+## Further Reading
+
+- [WCAG 2.1 Specification](https://www.w3.org/TR/WCAG21/)
+- [Understanding WCAG 2.1](https://www.w3.org/WAI/WCAG21/Understanding/)
+- [WCAG Techniques](https://www.w3.org/WAI/WCAG21/Techniques/)
+- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
+- [axe-core Rules](https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md)

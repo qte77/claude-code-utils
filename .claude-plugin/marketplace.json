@@ -47,13 +47,19 @@
     {
       "name": "docs-generator",
       "source": "./plugins/docs-generator",
-      "description": "Academic/technical writeup generation with IEEE citations and pandoc PDF output",
+      "description": "Document generation for writeups, tech specs (ADR/RFC/design docs), and reports with pandoc PDF output",
       "version": "1.0.0"
     },
     {
       "name": "ralph",
       "source": "./plugins/ralph",
       "description": "PRD-to-JSON conversion and interactive user story builder for the Ralph loop",
+      "version": "1.0.0"
+    },
+    {
+      "name": "embedded-dev",
+      "source": "./plugins/embedded-dev",
+      "description": "Embedded firmware development with CE/FCC compliance, ESP-IDF/PlatformIO, requirement traceability, and KiCad PCB auditing",
       "version": "1.0.0"
     },
     {
