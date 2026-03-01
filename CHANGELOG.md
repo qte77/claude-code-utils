@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **website-audit**: WCAG 2.1 AA quick-reference checklist, Further Reading links, demo section
+- **docs-generator**: Bundled pandoc toolchain (Makefile, run-pandoc.sh, setup-pdf-converter.sh), IEEE/APA/Chicago CSL styles, SessionStart prerequisite hook, pandoc-setup reference
+- **mas-design**: MITRE ATLAS, NIST AI RMF, ISO 42001/23894 integration with unified cross-framework threat mapping
+- AI security governance frameworks analysis (`docs/analysis/`)
+
+### Changed
+
+- **docs-generator**: Markdown writeups are core output; PDF export via pandoc is optional
+- **mas-design**: Plugin description, keywords, and demo updated to reflect all four frameworks
+
 ## [2.0.0] - 2026-03-01
 
 ### Added
