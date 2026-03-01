@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-03-01
+
 ### Added
 
 - README.md for 7 plugins, PR template, `.gitmessage` in commit-helper references
