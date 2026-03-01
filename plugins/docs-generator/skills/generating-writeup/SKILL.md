@@ -4,7 +4,7 @@ description: Generates academic/technical writeups with IEEE citations and pando
 compatibility: Designed for Claude Code
 allowed-tools: Read Write Edit Bash Glob Grep WebSearch WebFetch
 metadata:
-  argument-hint: [topic] [citation-style]
+  argument-hint: [topic] [template] [citation-style]
 ---
 
 # Writeup Generation
@@ -16,19 +16,21 @@ support. IEEE `[1]` style by default. PDF export via pandoc is optional.
 
 ## Workflow
 
-1. **Parse arguments** - Extract topic and optional citation style
+1. **Parse arguments** - Extract topic, template (default: `project-report-IMRaD`), and citation style
 2. **Create directory** - `docs/write-up/<topic>/`
-3. **Generate sections** - Use [template.md](template.md) for structure and formats
-4. **Setup bibliography** - Create `references.bib` (see template for BibTeX format)
-5. **Add YAML frontmatter** - See template for required fields
+3. **Copy template** - Copy from `templates/` to `docs/write-up/<topic>/`:
+   - `project-report-IMRaD` — scientific/academic (Introduction, Methods, Results, Discussion)
+   - `technical-doc` — software documentation (Overview, Architecture, API, Config, Deployment)
+4. **Fill sections** - Replace TODO comments in each chapter file
+5. **Setup bibliography** - Add entries to `09a_bibliography.bib`
 6. **Run markdownlint** - `npx markdownlint-cli docs/write-up/<topic>/*.md`
 7. **Generate PDF** (optional) - If pandoc is available, run `make pandoc_run`
 
 ## Additional Resources
 
-- For document structure, frontmatter, and BibTeX format, see [template.md](template.md)
-- For pandoc installation and setup, see [references/pandoc-setup.md](references/pandoc-setup.md)
-- To install prerequisites: `make -f $CLAUDE_PLUGIN_ROOT/Makefile setup_pdf_converter`
+- Templates: [project-report-IMRaD/](templates/project-report-IMRaD/) | [technical-doc/](templates/technical-doc/)
+- Setup help: `make -f $CLAUDE_PLUGIN_ROOT/Makefile setup_pdf_converter HELP`
+- Pandoc help: `make -f $CLAUDE_PLUGIN_ROOT/Makefile pandoc_run HELP=1`
 
 ## Citation Styles
 
@@ -50,7 +52,7 @@ dir=docs/write-up/<topic> && \
 make -f $CLAUDE_PLUGIN_ROOT/Makefile pandoc_run \
   INPUT_FILES="$$(printf '%s\036' $$dir/*.md)" \
   OUTPUT_FILE="$$dir/output.pdf" \
-  BIBLIOGRAPHY="$$dir/references.bib"
+  BIBLIOGRAPHY="$$dir/09a_bibliography.bib"
 ```
 
 With custom citation style:
@@ -60,7 +62,7 @@ dir=docs/write-up/<topic> && \
 make -f $CLAUDE_PLUGIN_ROOT/Makefile pandoc_run \
   INPUT_FILES="$$(printf '%s\036' $$dir/*.md)" \
   OUTPUT_FILE="$$dir/output.pdf" \
-  BIBLIOGRAPHY="$$dir/references.bib" \
+  BIBLIOGRAPHY="$$dir/09a_bibliography.bib" \
   CSL="$CLAUDE_PLUGIN_ROOT/scripts/writeup/citation-styles/apa.csl"
 ```
 

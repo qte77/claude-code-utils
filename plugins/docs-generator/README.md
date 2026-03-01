@@ -19,6 +19,7 @@ citations, BibTeX bibliography, and a pandoc command to produce the final PDF.
 
 ## Bundled
 
+- **Templates** — `project-report-IMRaD` (scientific/academic) and `technical-doc` (software documentation)
 - **Citation styles** — IEEE, APA, Chicago (CSL files in `scripts/writeup/citation-styles/`)
 - **Makefile** — `pandoc_run`, `writeup`, `setup_pdf_converter` targets
 - **SessionStart hook** — warns if pandoc or LaTeX are missing (PDF export only)
@@ -35,6 +36,12 @@ Auto-install with the bundled setup script:
 ```bash
 make -f $CLAUDE_PLUGIN_ROOT/Makefile setup_pdf_converter
 ```
+
+## Future Templates
+
+- `literature-review` — systematic reviews, state-of-the-art surveys
+- `design-doc` — engineering design proposals (RFC/ADR style)
+- `lab-report` — STEM lab/experiment writeups
 
 ## Install
 
