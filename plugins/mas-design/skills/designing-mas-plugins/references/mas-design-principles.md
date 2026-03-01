@@ -106,3 +106,6 @@ For security-specific checks, see the
 - [Anthropic: Effective Harnesses](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)
 - [PydanticAI](https://ai.pydantic.dev/)
 - [OWASP MAESTRO](https://genai.owasp.org/resource/multi-agentic-system-threat-modeling-guide-v1-0/)
+- [MITRE ATLAS](https://atlas.mitre.org/)
+- [NIST AI RMF 1.0 (AI 100-1)](https://www.nist.gov/artificial-intelligence/executive-order-safe-secure-and-trustworthy-artificial-intelligence)
+- [ISO/IEC 42001:2023](https://www.iso.org/standard/81230.html)

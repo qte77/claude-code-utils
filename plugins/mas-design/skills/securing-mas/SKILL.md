@@ -1,6 +1,6 @@
 ---
 name: securing-mas
-description: Apply OWASP MAESTRO 7-layer security framework to MAS designs
+description: Apply OWASP MAESTRO, MITRE ATLAS, NIST AI RMF, and ISO 42001/23894 security frameworks to MAS designs
 compatibility: Designed for Claude Code
 allowed-tools: Read Grep Glob WebSearch WebFetch
 metadata:
@@ -24,6 +24,25 @@ Trigger this skill when:
 
 **MUST READ**:
 `references/mas-security.md`
+
+## Framework Stack
+
+```text
+MITRE ATLAS (attack taxonomy — what adversaries do)
+      |  informs threat identification
+      v
+OWASP MAESTRO (threat model — what to defend against in MAS)
+      |  maps threats to controls
+      v
+NIST AI RMF (risk framework — how to govern/map/measure/manage)
+      |  operationalized by
+      v
+ISO 42001 + 23894 (certifiable management system + risk methodology)
+```
+
+Use all four layers together: ATLAS enumerates attack vectors, MAESTRO maps
+them to MAS-specific controls, NIST AI RMF structures governance, and ISO
+provides the certifiable management system.
 
 ## MAESTRO 7-Layer Security Check
 
@@ -178,17 +197,17 @@ api_key = os.environ["API_KEY"]  # From env
 
 ## Threat Matrix Template
 
-For each new feature, document threats:
+For each new feature, document threats with cross-framework mapping:
 
-| Layer | Component | Threat | Sev | Mitigation |
-| ----- | --------- | ------ | --- | ---------- |
-| 1 | LLM caller | Prompt inj. | HIGH | Structured out |
-| 2 | Plugin | Type confusion | MED | Validation |
-| 3 | API | Svc downtime | MED | Degradation |
-| 4 | Logs | Log injection | MED | Structured log |
-| 5 | Runner | Resource exh. | HIGH | Timeouts |
-| 6 | Infra | Secret exposure | HIGH | Env vars |
-| 7 | Registry | Hijacking | MED | Static import |
+| Concern | ATLAS Technique | MAESTRO Layer | NIST Function | ISO Control |
+| ------- | --------------- | ------------- | ------------- | ----------- |
+| Prompt injection | AML.T0051 | L1 Model | MEASURE 2.6 | A.7.3 |
+| API credential theft | AML.T0096 | L3 Integration | GOVERN 1.5 | A.8 |
+| Log data leakage | AML.T0024 | L4 Monitoring | MAP 3 | A.7.5 |
+| Resource exhaustion | — | L5 Execution | MANAGE 2 | A.6.6 |
+| Supply chain compromise | AML.T0040 | L6 Environment | MAP 1.6 | A.8 |
+| Agent hijacking | AML.T0056 | L7 Orchestration | MEASURE 2.6 | A.6.4 |
+| Evaluation bias | AML.T0043 | L2 Agent Logic | MEASURE 2.5 | A.7.4 |
 
 ## Security Testing
 
@@ -222,4 +241,9 @@ def test_error_message_safety():
 
 - [OWASP MAESTRO v1.0](https://genai.owasp.org/resource/multi-agentic-system-threat-modeling-guide-v1-0/)
 - [OWASP Top 10 for LLMs](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [12-Factor Security](https://12factor.net/)
+- [MITRE ATLAS](https://atlas.mitre.org/)
+- [NIST AI RMF 1.0 (AI 100-1)](https://www.nist.gov/artificial-intelligence/executive-order-safe-secure-and-trustworthy-artificial-intelligence)
+- [NIST AI 600-1 Generative AI Profile](https://doi.org/10.6028/NIST.AI.600-1)
+- [ISO/IEC 42001:2023](https://www.iso.org/standard/81230.html)
+- [ISO/IEC 23894:2023](https://www.iso.org/standard/77304.html)
+- [12-Factor Agents](https://github.com/humanlayer/12-factor-agents)

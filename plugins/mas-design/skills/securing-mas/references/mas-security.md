@@ -1,6 +1,6 @@
 ---
 title: Multi-Agent System Security Framework
-description: OWASP MAESTRO 7-layer security framework for multi-agent systems
+description: OWASP MAESTRO, MITRE ATLAS, NIST AI RMF, and ISO 42001/23894 security frameworks for multi-agent systems
 created: 2026-02-09
 category: best-practices
 version: 2.0.0
@@ -9,7 +9,13 @@ see-also: mas-design-principles.md
 
 Based on [OWASP MAESTRO
 v1.0](https://genai.owasp.org/resource/multi-agentic-system-threat-modeling-guide-v1-0/)
--- a 7-layer threat modeling framework for multi-agent systems.
+-- a 7-layer threat modeling framework for multi-agent systems. Complemented by
+[MITRE ATLAS](https://atlas.mitre.org/) (adversarial attack taxonomy),
+[NIST AI RMF](https://www.nist.gov/artificial-intelligence/executive-order-safe-secure-and-trustworthy-artificial-intelligence)
+(risk governance), and
+[ISO 42001](https://www.iso.org/standard/81230.html) /
+[ISO 23894](https://www.iso.org/standard/77304.html)
+(certifiable AI management and risk methodology).
 
 ## MAESTRO Layers
 
@@ -133,10 +139,27 @@ Checklist](mas-design-principles.md#agentplugin-design-checklist).
 - [ ] Retry logic with exponential backoff
 - [ ] Circuit breaker for cascading failures
 
+## Cross-Framework Mapping
+
+| Concern | ATLAS Technique | MAESTRO Layer | NIST Function | ISO Control |
+| ------- | --------------- | ------------- | ------------- | ----------- |
+| Prompt injection | AML.T0051 | L1 Model | MEASURE 2.6 | A.7.3 |
+| API credential theft | AML.T0096 | L3 Integration | GOVERN 1.5 | A.8 |
+| Log data leakage | AML.T0024 | L4 Monitoring | MAP 3 | A.7.5 |
+| Resource exhaustion | — | L5 Execution | MANAGE 2 | A.6.6 |
+| Supply chain compromise | AML.T0040 | L6 Environment | MAP 1.6 | A.8 |
+| Agent hijacking | AML.T0056 | L7 Orchestration | MEASURE 2.6 | A.6.4 |
+| Evaluation bias | AML.T0043 | L2 Agent Logic | MEASURE 2.5 | A.7.4 |
+
 ## References
 
 - [OWASP MAESTRO
   v1.0](https://genai.owasp.org/resource/multi-agentic-system-threat-modeling-guide-v1-0/)
-- [12-Factor App](https://12factor.net/)
 - [OWASP Top 10 for LLM
   Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [MITRE ATLAS](https://atlas.mitre.org/)
+- [NIST AI RMF 1.0 (AI 100-1)](https://www.nist.gov/artificial-intelligence/executive-order-safe-secure-and-trustworthy-artificial-intelligence)
+- [NIST AI 600-1 Generative AI Profile](https://doi.org/10.6028/NIST.AI.600-1)
+- [ISO/IEC 42001:2023](https://www.iso.org/standard/81230.html)
+- [ISO/IEC 23894:2023](https://www.iso.org/standard/77304.html)
+- [12-Factor App](https://12factor.net/)
