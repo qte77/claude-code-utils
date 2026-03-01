@@ -15,11 +15,11 @@ Writes **focused, behavior-driven tests** following project testing strategy.
 
 ## Quick Reference
 
-**Full documentation**: `docs/best-practices/`
+**Full documentation**: `references/`
 
-- `testing-strategy.md` - Strategy, what to test, patterns to remove
-- `tdd-best-practices.md` - TDD methodology
-- `bdd-best-practices.md` - BDD methodology
+- `references/testing-strategy.md` - Strategy, what to test, patterns to remove
+- `references/tdd-best-practices.md` - TDD methodology
+- `references/bdd-best-practices.md` - BDD methodology
 
 ## Quick Decision
 
@@ -27,7 +27,7 @@ Writes **focused, behavior-driven tests** following project testing strategy.
 
 **BDD (optional)**: Use Given-When-Then for stakeholder collaboration on acceptance criteria.
 
-See `testing-strategy.md` for full methodology comparison.
+See `references/testing-strategy.md` for full methodology comparison.
 
 ## TDD Essentials (Quick Reference)
 
@@ -61,9 +61,9 @@ def test_order_processor_calculates_total():
 
 **High-Value**: Business logic, integration points, edge cases, contracts
 
-**Avoid**: Library behavior, trivial assertions, implementation details, default constants, stale fixture patches (see `testing-strategy.md` → "Patterns to Remove")
+**Avoid**: Library behavior, trivial assertions, implementation details, default constants, stale fixture patches (see `references/testing-strategy.md` → "Patterns to Remove")
 
-See `testing-strategy.md` → "Patterns to Remove" for full list.
+See `references/testing-strategy.md` → "Patterns to Remove" for full list.
 
 ## Naming Convention
 

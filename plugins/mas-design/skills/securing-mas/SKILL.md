@@ -23,7 +23,7 @@ Trigger this skill when:
 ## References
 
 **MUST READ**:
-`docs/best-practices/mas-security.md`
+`references/mas-security.md`
 
 ## MAESTRO 7-Layer Security Check
 
