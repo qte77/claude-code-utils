@@ -11,28 +11,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-03-01
+
 ### Added
 
-- README.md for 7 plugins (python-dev, commit-helper, codebase-tools, backend-design, mas-design, website-audit, docs-generator)
+- README.md for 7 plugins, PR template, `.gitmessage` in commit-helper references
+- `ralph` plugin with `generating-prd-json-from-prd-md` and `generating-interactive-userstory-md` skills (extracted from docs-generator)
 - Hooks declaration in plugin.json for python-dev, workspace-setup, workspace-sandbox
-- `.gitmessage` bundled in commit-helper skill references
-- Stop hook session summaries design doc (`docs/analysis/CC-stop-hook-session-summaries.md`)
-- CC plugin development reference guide (`docs/analysis/CC-plugin-enhancement-analysis.md`)
+- CodeQL (auto lang detection) and MkDocs Material (pinned `<2.0`) GitHub Actions workflows
+- `mkdocs.yml` with nav for all plugins, analysis docs, and changelog
+- Design docs: stop hook session summaries, plugin enhancement analysis
+- `make test_install` covers all 10 plugins with broken symlink check
 
 ### Changed
 
-- All plugins are now standalone-installable (no cross-boundary symlinks or repo-root references)
-- Skill references use real file copies instead of symlinks
-- workspace-sandbox uses real copies of rules and scripts (was symlinks to workspace-setup)
-- Deduplicated workspace plugins: workspace-sandbox owns sandbox-specific settings (.gitignore, settings-sandbox.json), workspace-setup owns base settings (settings-base.json)
-- Documented standalone install DRY trade-offs in README
+- All plugins standalone-installable (symlinks replaced with real copies, DRY via `make sync`)
+- `docs-generator` narrowed to writeup-only (Ralph skills extracted to `ralph` plugin)
+- Marketplace updated to 10 plugins
+- workspace-sandbox owns sandbox-specific settings, workspace-setup owns base settings
 
 ### Removed
 
-- `docs/best-practices/` directory (source of truth moved into plugin skill references)
-- `plugins/_shared/scripts/deploy-references.sh` (no longer needed)
-- mas-design SessionStart hook (only deployed references, now empty)
-- Best-practices deploy from python-dev setup script
+- `docs/best-practices/`, `plugins/_shared/scripts/deploy-references.sh`, mas-design hooks
 
 ## [1.0.0] - 2026-03-01
 
