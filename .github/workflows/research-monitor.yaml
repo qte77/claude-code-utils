@@ -36,7 +36,7 @@ jobs:
           python .github/scripts/research-compare.py \
             --research-dir .research-docs \
             --plugins-dir plugins \
-            > research-findings.md 2>&1
+            > research-findings.md
           echo "exit_code=$?" >> "$GITHUB_OUTPUT"
           set -e
 
