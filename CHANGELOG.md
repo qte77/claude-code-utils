@@ -17,6 +17,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **workspace-setup** (1.5.0): unattended-run kit added to the deployed set — `unattended-execution`
+  always-loaded rule (→ `.claude/rules/`) plus `plan.template.md`, `handoff.template.md`, and
+  `settings.unattended.jsonc` (→ `docs/templates/`) so scaffolded repos inherit the hands-off contract.
+  Pre-stages the qte77 arc-003 estate contract (still uncommitted); the guide stays in the contract repo
+  and the rule/templates repoint to its canonical location (#197)
 - **security-audit** (1.2.0): `triaging-security-report` skill — verify an external/AI-generated
   security report against the actual code before acting; four-way verdict rubric
   (CONFIRMED / OVERSTATED / FALSE-POSITIVE / FABRICATED), deployment-context severity re-rating,

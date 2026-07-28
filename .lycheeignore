@@ -10,3 +10,9 @@
 https://www\.fcc\.gov/engineering-technology/laboratory-division/general/equipment-authorization
 https://insta\.rs
 https://www\.awwwards\.com
+
+# Forward-reference to the qte77 estate unattended-execution guide (the MECHANISM
+# deploys here; the depth guide stays in the contract repo). Resolves once qte77
+# commits its arc-003 contract — the same gate this parked kit waits on. The
+# always-loaded rule + templates repoint to this canonical location.
+https://github\.com/qte77/qte77/blob/main/docs/unattended-execution\.md

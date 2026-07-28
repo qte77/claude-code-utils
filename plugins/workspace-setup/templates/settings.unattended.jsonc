@@ -1,0 +1,61 @@
+// Unattended-run harness config — MERGE these keys into a repo's .claude/settings.json.
+// This is a copyable template, not a live settings file (JSONC comments are for humans; strip them,
+// settings.json is strict JSON). Instantiates the estate unattended-execution contract:
+//   https://github.com/qte77/qte77/blob/main/docs/unattended-execution.md  ->  "Context economy".
+//
+// Learned from prior runs: few repos had this wired, and the ones that did not wall-clocked into
+// hard context limits mid-arc. Make it standard for any repo running hands-off.
+{
+  "env": {
+    // Fire auto-compact earlier (main + subagents) so a long run never wall-clocks into a hard
+    // context limit mid-arc. 50 = compact at 50% capacity; leaves room for reasoning + recovery
+    // (see .claude/rules/context-management.md, the 40-60% target). The model cannot self-trigger
+    // /compact — this env var is how you make compaction happen unattended.
+    //
+    // Reading the statusline with this set: a "free %" figure is a COUNTDOWN TO AUTO-COMPACTION, not to
+    // the hard context limit. At 50, ~0% "free" means the window is ~50% used and compaction is at its
+    // threshold — by design here, not an error. (/context shows the other denominator: fraction of the
+    // full window used.)
+    //
+    // Threshold tradeoff: 50 is aggressive — it fires often and can fire mid-task. ~65-70 gives more
+    // runway while still leaving recovery room. Tune per repo, and lean on milestone-flushing (the
+    // durable ledger) so the exact trigger point matters less. Subagent your discovery FIRST — the
+    // biggest lever, and it pushes the trigger point out on its own.
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "50"
+  },
+
+  "hooks": {
+    // Highest-ROI compaction change: archive a rich handoff to disk BEFORE the summary replaces the
+    // window. A PreCompact hook can archive (and gate) but never itself triggers compaction — so it
+    // turns a compaction from a loss into a checkpoint. Point it at a tracked script that flushes the
+    // live arc state (shipped list, one-step resume, branch/PR/CI, parked gates) to handoff + memory.
+    "PreCompact": [
+      {
+        "matcher": "auto",
+        "hooks": [
+          { "type": "command", "command": ".claude/scripts/archive-handoff.sh" }
+        ]
+      }
+    ],
+
+    // Re-onboard the agent after a compaction (and at session start) so the post-compact context is
+    // correct, not just smaller. Point the command at a repo script that echoes the re-onboarding
+    // instruction; keep the instruction itself in the script so it stays in git.
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            // Example inline form. Prefer a tracked script: .claude/scripts/reonboard.sh
+            "command": "echo 'Re-onboard: re-read the newest docs/handoffs/NNN + its paired plan (the file:line source map). Verify plan + handoff + MEMORY.md reflect current branch/PR/CI state. Keep conclusions and the parked owner-gates; drop raw command output and search dumps.'"
+          }
+        ]
+      }
+    ]
+  }
+
+  // Permissions: grow .claude/settings.local.json as an allowlist from real runs (the friction-remover
+  // for true hands-off). For scraper / untrusted-input repos keep it NARROW — broad read-only Bash
+  // widens prompt-injection blast radius. See https://github.com/qte77/qte77/blob/main/docs/unattended-execution.md "The unattended tax".
+}

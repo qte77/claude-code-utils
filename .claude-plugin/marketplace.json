@@ -77,8 +77,8 @@
     {
       "name": "workspace-setup",
       "source": "./plugins/workspace-setup",
-      "description": "Deploys workspace rules, statusline, governance files, base settings, and read-once deduplication hook",
-      "version": "1.4.1"
+      "description": "Deploys workspace rules, statusline, governance files, base settings, unattended-run templates, and read-once deduplication hook",
+      "version": "1.5.0"
     },
     {
       "name": "workspace-sandbox",

@@ -16,5 +16,6 @@ accept = [200, 202, 204, 301, 401, 403, 429]
 exclude_path = [
   "plugins/docs-governance/templates",
   "plugins/workspace-setup/governance",
+  "plugins/workspace-setup/templates",
   "plugins/workspace-sandbox/governance",
 ]
