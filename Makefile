@@ -79,6 +79,7 @@ check_sync:  ## Verify all copies are in sync with .claude/ SoT
 	@test -L plugins/workspace-setup/rules/core-principles.md || (echo "ERROR: plugins/workspace-setup/rules/core-principles.md is not a symlink" && exit 1)
 	@test -L plugins/workspace-setup/rules/context-management.md || (echo "ERROR: plugins/workspace-setup/rules/context-management.md is not a symlink" && exit 1)
 	@test -L plugins/workspace-setup/rules/compound-learning.md || (echo "ERROR: plugins/workspace-setup/rules/compound-learning.md is not a symlink" && exit 1)
+	@test -L plugins/workspace-setup/rules/unattended-execution.md || (echo "ERROR: plugins/workspace-setup/rules/unattended-execution.md is not a symlink" && exit 1)
 	@test -L plugins/workspace-sandbox/rules/core-principles.md || (echo "ERROR: plugins/workspace-sandbox/rules/core-principles.md is not a symlink" && exit 1)
 	@test -L plugins/workspace-sandbox/rules/context-management.md || (echo "ERROR: plugins/workspace-sandbox/rules/context-management.md is not a symlink" && exit 1)
 	@test -L plugins/workspace-sandbox/rules/compound-learning.md || (echo "ERROR: plugins/workspace-sandbox/rules/compound-learning.md is not a symlink" && exit 1)

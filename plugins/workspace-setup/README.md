@@ -6,7 +6,7 @@ Self-contained — all CC-specific files bundled in the plugin, no external depe
 
 ## Deployed files
 
-- **rules/*.md** → `.claude/rules/` — core principles, context management
+- **rules/*.md** → `.claude/rules/` — core principles, context management, compound learning, unattended execution
 - **scripts/statusline.sh** → `.claude/scripts/` — status line display. World clock off by default. Two ways to opt in: (1) **persistent** — set `CC_WORLD_CLOCK="Asia/Tokyo,Europe/Paris,Europe/London,UTC,America/New_York,America/Los_Angeles"` in your shell rc (needs CC restart to change); (2) **live toggle** — write the same comma-separated zone list to `~/.claude/world-clock` (next prompt render picks it up; `rm` the file to turn off). Env var wins over file. Use east-to-west / sunrise order or any IANA zones you prefer. Each entry is either a bare zone (`Europe/Paris` → label `Paris`) or `Zone=Label` to override the rendered label (`America/New_York=NYC` → label `NYC`). Zones render on a dedicated line below the main statusline; invalid zones show as `?<name>`. See the comment block at the top of `.claude/scripts/statusline.sh` for the curated shortlist and usage notes.
 - **settings/settings-base.json** → `.claude/settings.json` — lightweight defaults (statusline, context7, attribution)
 - **governance/AGENTS.md** → `AGENTS.md` — agent behavioral rules and decision framework
@@ -14,6 +14,7 @@ Self-contained — all CC-specific files bundled in the plugin, no external depe
 - **governance/AGENT_REQUESTS.md** → `AGENT_REQUESTS.md` — human escalation protocol
 - **governance/README.md** → `README.md` — value-first front door, derived from the [qte77 doc-structure canon](https://github.com/qte77/qte77/blob/main/docs/doc-structure.md)
 - **governance/CONTRIBUTING.md** → `CONTRIBUTING.md` — technical workflows + the `## Documentation hierarchy` statement
+- **templates/*** → `docs/templates/` — copyable references for hands-off runs: `plan.template.md` + `handoff.template.md` (per-arc plan/handoff scaffolds with the `file:line` source map) and `settings.unattended.jsonc` (the auto-compact + PreCompact/SessionStart harness snippet to merge into `.claude/settings.json`). Instantiates the [qte77 unattended-execution contract](https://github.com/qte77/qte77/blob/main/docs/unattended-execution.md).
 
 All files use copy-if-not-exists (won't overwrite).
 

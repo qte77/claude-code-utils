@@ -40,7 +40,18 @@ for file in "$PLUGIN_DIR/governance/"*.md; do
   fi
 done
 
-# 5. Report
+# 5. Templates → docs/templates/ (copyable references: plan/handoff + unattended settings snippet)
+mkdir -p docs/templates
+for tmpl in "$PLUGIN_DIR/templates/"*; do
+  [ -f "$tmpl" ] || continue
+  target="docs/templates/$(basename "$tmpl")"
+  if [ ! -f "$target" ]; then
+    cp "$tmpl" "$target"
+    DEPLOYED+=("template: $(basename "$tmpl")")
+  fi
+done
+
+# 6. Report
 if [ ${#DEPLOYED[@]} -gt 0 ]; then
   echo "# Workspace Setup"
   echo ""
