@@ -17,6 +17,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **workspace-setup** (1.5.0), **workspace-sandbox** (1.4.0):
+  `unattended-execution` shared rule — arc template for long-running
+  hands-off sessions. Eligibility gate and never-offload list, `NNNN`
+  plan/handoff artifacts with a mandatory source map, Phase A/B/C
+  non-blocked shape, declared wall-clock/cost/iteration/no-progress
+  bounds, `human-required` escalation, per-milestone git + docs/issues
+  audit, quality gates, signal integrity (*a check that did not run is
+  FAIL, not PASS*), polyfetch UI e2e, context economy, env-var-only git
+  identity. `check_sync` gains symlink guards for both copies. Cited by
+  absolute path in six consumer repos but never authored
 - **security-audit** (1.2.0): `triaging-security-report` skill — verify an external/AI-generated
   security report against the actual code before acting; four-way verdict rubric
   (CONFIRMED / OVERSTATED / FALSE-POSITIVE / FABRICATED), deployment-context severity re-rating,
