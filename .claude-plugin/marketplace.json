@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Claude Code utility plugins for development, architecture, auditing, documentation, market research, and CC meta-skills",
-    "version": "3.7.0"
+    "version": "3.8.0"
   },
   "plugins": [
     {
@@ -78,13 +78,13 @@
       "name": "workspace-setup",
       "source": "./plugins/workspace-setup",
       "description": "Deploys workspace rules, statusline, governance files, base settings, and read-once deduplication hook",
-      "version": "1.4.1"
+      "version": "1.5.0"
     },
     {
       "name": "workspace-sandbox",
       "source": "./plugins/workspace-sandbox",
       "description": "Deploys workspace rules, statusline script, eased sandbox settings, and read-once deduplication hook",
-      "version": "1.3.11"
+      "version": "1.4.0"
     },
     {
       "name": "docs-governance",
