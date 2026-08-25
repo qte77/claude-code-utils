@@ -29,7 +29,7 @@ It symlinks `$HOME/.claude` to `/workspaces/.claude-files` (override with `CLAUD
 
 This can't live in a plugin hook: `SessionStart` only fires once Claude Code (and this plugin) are already installed, which itself requires `~/.claude` to already be linked — a hook can't bootstrap the directory it lives inside. The `SessionStart` hook below does still warn if it detects `~/.claude` isn't a symlink, for visibility in sessions where it happens to run, but it can't self-heal.
 
-Note this only covers `~/.claude` itself — `~/.claude.json` (trust/permission state per project, marketplace/onboarding flags) is a separate sibling file outside `~/.claude` and needs its own handling.
+Note this only covers `~/.claude` itself — `~/.claude.json` (trust/permission state per project, marketplace/onboarding flags) is a separate sibling file outside `~/.claude` with no recommended fix here. Symlinking an individual live-rewritten file is a known-risky pattern — Claude Code config writes aren't verified atomic-rename-safe on every path, which silently breaks a file symlink (directory symlinks like `~/.claude` above aren't affected). See [#199](https://github.com/qte77/claude-code-plugins/issues/199) failure mode 1. The `SessionStart` hook warns if `~/.claude.json` isn't linked, same as for `~/.claude`.
 
 ## read-once hook
 

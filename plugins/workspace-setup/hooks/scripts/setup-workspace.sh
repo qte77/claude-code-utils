@@ -46,6 +46,14 @@ WARNINGS=()
 if [ ! -L "$HOME/.claude" ]; then
   WARNINGS+=("~/.claude is not a symlink to persisted storage — memory, sessions, credentials, and settings will not survive a container rebuild. Run scripts/link-claude-home.sh from your devcontainer's onCreateCommand (this hook runs too late to fix it itself).")
 fi
+# ~/.claude.json (sibling file: project trust state, marketplace/onboarding
+# flags) has no persistence mechanism here at all — flagged, not fixed. Claude
+# Code config writes are not verified atomic-rename-safe for every path (see
+# qte77/claude-code-plugins#199 failure mode 1), so symlinking a single file
+# is a known-risky pattern, not a recommended fix.
+if [ ! -L "$HOME/.claude.json" ]; then
+  WARNINGS+=("~/.claude.json is not persisted — per-project trust approvals and marketplace/onboarding state will not survive a container rebuild. No recommended fix yet (see qte77/claude-code-plugins#199).")
+fi
 
 # 6. Report
 if [ ${#DEPLOYED[@]} -gt 0 ] || [ ${#WARNINGS[@]} -gt 0 ]; then
