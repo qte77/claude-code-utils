@@ -15,6 +15,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
      section were written pre-#37; newer entries are appended. Full backfill
      completed 2026-04-11. -->
 
+### Fixed
+
+- **workspace-setup** (1.5.1): `link-claude-home.sh` now verifies the symlink actually points at the
+  configured persisted target, not just that some symlink exists at `~/.claude` — a stale link (e.g.
+  after a path or account change) previously read as "already linked" and was never corrected.
+
 ### Added
 
 - **workspace-setup** (1.5.0): `scripts/link-claude-home.sh` — copyable snippet that symlinks `~/.claude`

@@ -26,7 +26,14 @@ home="${CLAUDE_HOME_DIR:-$HOME/.claude}"
 target="${CLAUDE_HOME_PERSIST_DIR:-/workspaces/.claude-files}"
 
 if [ -L "$home" ]; then
-  echo "[link-claude-home] already linked: $home -> $(readlink "$home")"
+  current="$(readlink "$home")"
+  if [ "$current" = "$target" ]; then
+    echo "[link-claude-home] already linked: $home -> $target"
+    exit 0
+  fi
+  echo "[link-claude-home] relinking: $home was -> $current, now -> $target"
+  rm "$home"
+  ln -s "$target" "$home"
   exit 0
 fi
 
