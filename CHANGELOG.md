@@ -17,6 +17,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **workspace-setup** (1.5.0): `scripts/link-claude-home.sh` — copyable snippet that symlinks `~/.claude`
+  to persisted storage (e.g. `/workspaces` on GitHub Codespaces) so memory, sessions, settings, and
+  credentials survive a container rebuild; must run from a devcontainer's `onCreateCommand` since a
+  plugin hook can't bootstrap the directory it lives inside. `SessionStart` hook now warns (non-fatal)
+  when it detects `~/.claude` or `~/.claude.json` isn't linked/persisted — the latter has no recommended
+  fix yet, since symlinking an individual live-rewritten file is a known-risky pattern (#199 failure
+  mode 1).
 - **security-audit** (1.2.0): `triaging-security-report` skill — verify an external/AI-generated
   security report against the actual code before acting; four-way verdict rubric
   (CONFIRMED / OVERSTATED / FALSE-POSITIVE / FABRICATED), deployment-context severity re-rating,

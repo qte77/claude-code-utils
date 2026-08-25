@@ -34,7 +34,7 @@ Claude Code plugin marketplace — 25 plugins, 61 skills, 2 agents from producti
 | **gha-dev** | `creating-gha` | GitHub Actions creation and Marketplace publishing |
 | **makefile-core** | `creating-makefile` | Makefile scaffolding, linting, and conventions |
 | **rag-core** | `implementing-document-indexing` | Heading-boundary chunking, FAISS, PageIndex hybrid retrieval |
-| **workspace-setup** | — | Deploys rules, statusline, governance, base settings via SessionStart |
+| **workspace-setup** | — | Deploys rules, statusline, governance, base settings via SessionStart; copyable `~/.claude` rebuild-persistence snippet |
 | **workspace-sandbox** | — | Deploys rules, statusline, sandbox settings via SessionStart |
 | **cc-voice** (external) | — | E2E voice — TTS via PTY proxy, STT planned ([prototype](https://github.com/qte77/cc-voice-plugin-prototype)) |
 
