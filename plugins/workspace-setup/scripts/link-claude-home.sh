@@ -1,0 +1,1 @@
+../../../.claude/scripts/link-claude-home.sh

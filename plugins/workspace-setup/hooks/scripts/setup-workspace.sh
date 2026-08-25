@@ -40,12 +40,28 @@ for file in "$PLUGIN_DIR/governance/"*.md; do
   fi
 done
 
-# 5. Report
-if [ ${#DEPLOYED[@]} -gt 0 ]; then
+# 5. Drift check: ~/.claude should be a symlink to persisted storage (rebuild
+# survival). This hook can't fix it — see scripts/link-claude-home.sh for why.
+WARNINGS=()
+if [ ! -L "$HOME/.claude" ]; then
+  WARNINGS+=("~/.claude is not a symlink to persisted storage — memory, sessions, credentials, and settings will not survive a container rebuild. Run scripts/link-claude-home.sh from your devcontainer's onCreateCommand (this hook runs too late to fix it itself).")
+fi
+
+# 6. Report
+if [ ${#DEPLOYED[@]} -gt 0 ] || [ ${#WARNINGS[@]} -gt 0 ]; then
   echo "# Workspace Setup"
   echo ""
-  echo "Deployed ${#DEPLOYED[@]} file(s):"
-  for item in "${DEPLOYED[@]}"; do
-    echo "  - $item"
-  done
+  if [ ${#DEPLOYED[@]} -gt 0 ]; then
+    echo "Deployed ${#DEPLOYED[@]} file(s):"
+    for item in "${DEPLOYED[@]}"; do
+      echo "  - $item"
+    done
+  fi
+  if [ ${#WARNINGS[@]} -gt 0 ]; then
+    echo ""
+    echo "Warnings:"
+    for w in "${WARNINGS[@]}"; do
+      echo "  - $w"
+    done
+  fi
 fi

@@ -17,6 +17,20 @@ Self-contained — all CC-specific files bundled in the plugin, no external depe
 
 All files use copy-if-not-exists (won't overwrite).
 
+## Persisting ~/.claude across container rebuilds
+
+`scripts/link-claude-home.sh` is a copyable snippet, not something this plugin invokes itself. Copy it into your repo (e.g. `scripts/link-claude-home.sh`) and call it first in `.devcontainer/devcontainer.json`'s `onCreateCommand`, before any step that installs or touches Claude Code:
+
+```json
+"onCreateCommand": "bash scripts/link-claude-home.sh && make setup_all"
+```
+
+It symlinks `$HOME/.claude` to `/workspaces/.claude-files` (override with `CLAUDE_HOME_DIR` / `CLAUDE_HOME_PERSIST_DIR`) so memory, sessions, settings, and credentials survive a container rebuild — on platforms like GitHub Codespaces, everything outside `/workspaces` is cleared on rebuild, everything inside it persists.
+
+This can't live in a plugin hook: `SessionStart` only fires once Claude Code (and this plugin) are already installed, which itself requires `~/.claude` to already be linked — a hook can't bootstrap the directory it lives inside. The `SessionStart` hook below does still warn if it detects `~/.claude` isn't a symlink, for visibility in sessions where it happens to run, but it can't self-heal.
+
+Note this only covers `~/.claude` itself — `~/.claude.json` (trust/permission state per project, marketplace/onboarding flags) is a separate sibling file outside `~/.claude` and needs its own handling.
+
 ## read-once hook
 
 PreToolUse hook that prevents redundant file re-reads within a session.
