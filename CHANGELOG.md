@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
      section were written pre-#37; newer entries are appended. Full backfill
      completed 2026-04-11. -->
 
+### Changed
+
+- **workspace-setup** (1.5.2): decided not to build `~/.claude.json` rebuild-persistence — closed #203.
+  Warning wording updated from "no recommended fix yet" to reflect that this is final, not pending.
+
 ### Fixed
 
 - **workspace-setup** (1.5.1): `link-claude-home.sh` now verifies the symlink actually points at the
